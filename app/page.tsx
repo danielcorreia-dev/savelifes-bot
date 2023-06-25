@@ -1,19 +1,23 @@
-import ChatInput from '@/components/ChatInput';
+'use client';
+import { useState } from 'react';
+import ChatArea from './components/ChatArea';
+import { Chat } from './types/Chat';
+import ChatMessage from './components/ChatMessage';
 
-export const metadata = {
-  title: 'Savelives - Chatbot',
-};
 const Home = () => {
+  const [chatActive, setChatActive] = useState<Chat>({
+    id: '1',
+    messages: [
+      { id: '1', author: 'ai', body: 'Hello, how can I help you?' },
+      { id: '2', author: 'me', body: 'I need help' },
+    ],
+  });
   return (
-    <div className="relative flex h-full max-w-full flex-1 overflow-hidden">
-      <div className="flex h-full max-w-full flex-1 flex-col">
-        <main className="relative h-full w-full transition-width flex flex-col overflow-auto items-stretch flex-1">
-          <div className="absolute">
-            <ChatInput />
-          </div>
-        </main>
-      </div>
-    </div>
+    <main className="flex min-h-screen bg-space-purple-100 dark:bg-space-gray-dark-800 w-full">
+      <section className="min-w-full">
+        <ChatArea chat={chatActive} />
+      </section>
+    </main>
   );
 };
 

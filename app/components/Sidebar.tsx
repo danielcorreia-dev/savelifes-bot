@@ -1,12 +1,11 @@
 'use client';
-
-import React, { useEffect, useState } from 'react';
-import { AnimatePresence, motion, transform } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { MdChatBubbleOutline, MdMenuBook } from 'react-icons/md';
 import { LuGithub } from 'react-icons/lu';
 import { IconType } from 'react-icons';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import classNames from 'classnames';
 
 type SidebarItem = {
   name: string;
@@ -33,6 +32,7 @@ const sidebarItems: SidebarItem[] = [
 ];
 
 const Sidebar = () => {
+  const pathname = usePathname();
   const [active, setActive] = useState(false);
 
   const showAnimation = {
@@ -58,30 +58,34 @@ const Sidebar = () => {
       }}
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}
-      className="fixed overflow-scroll bg-slate-800 h-screen no-scrollbar"
+      className="md:fixed overflow-scroll bg-space-purple-900 dark:bg-space-gray-dark-800 h-screen no-scrollbar"
     >
-      <aside className="px-4 py-6">
+      <aside className="px-6 py-6">
         <nav className="flex w-max">
           <ul className="flex-col items-center min-w-full">
-            {sidebarItems.map(({ name, path, icon: Icon }, index) => (
-              <li
-                key={index}
-                className="hover:text-secondary-yellow transition-colors transition-150 cursor-pointer flex items-center h-20 w-full"
-              >
-                <Link href={path} className="flex items-center h-20 w-full">
-                  <Icon size={28} className="mr-4" />
-                  {active && (
-                    <motion.span
-                      variants={showAnimation}
-                      initial="hidden"
-                      animate="show"
-                    >
-                      {name}
-                    </motion.span>
-                  )}
-                </Link>
-              </li>
-            ))}
+            {sidebarItems.map(({ name, path, icon: Icon }, index) => {
+              const pathActive = pathname.startsWith(path);
+              return (
+                <li
+                  key={index}
+                  className={`text-space-purple-100 hover:text-secondary-yellow transition-colors transition-150 cursor-pointer flex items-center h-20 w-full`}
+                >
+                  <Link href={path} className="flex items-center h-20 w-full">
+                    <Icon size={28} />
+                    {active && (
+                      <motion.span
+                        variants={showAnimation}
+                        initial="hidden"
+                        animate="show"
+                        className="ml-4"
+                      >
+                        {name}
+                      </motion.span>
+                    )}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
       </aside>

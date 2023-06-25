@@ -13,4 +13,12 @@
       scrollbar-width: none;
     }
   }
+
+  @variants responsive {
+    .styled-scrollbar::-webkit-scrollbar,
+    .styled-scrollbar::-webkit-scrollbar-track {
+      width: '1rem';
+      background-color: '#252735';
+    }
+  }
 }
