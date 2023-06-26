@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Sidebar />
-        <div className="ml-[76px]">
+        <div className="ml-[76px] bg-space-purple-100 dark:bg-space-gray-dark-700">
           <div className="">{children}</div>
         </div>
       </body>

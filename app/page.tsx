@@ -1,21 +1,65 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ChatArea from './components/ChatArea';
-import { Chat } from './types/Chat';
-import ChatMessage from './components/ChatMessage';
+import { Chat } from '@/types/Chat';
+import { Footer } from './components/Footer';
+import { v4 as uuidv4 } from 'uuid';
+import { sendRequest } from './utils/swr';
+import useSWRMutation from 'swr/mutation';
 
 const Home = () => {
-  const [chatActive, setChatActive] = useState<Chat>({
-    id: '1',
-    messages: [
-      { id: '1', author: 'ai', body: 'Hello, how can I help you?' },
-      { id: '2', author: 'me', body: 'I need help' },
-    ],
-  });
+  const [AILoading, setAILoading] = useState<boolean>(false);
+  const [chatActiveId, setChatActiveId] = useState<string>('');
+  const [chatList, setChatList] = useState<Chat>({ messages: [] });
+
+  useEffect(() => {
+    if (AILoading) {
+      getAIResponse();
+    }
+  }, [AILoading]);
+
+  const getAIResponse = async () => {
+    const chatListClone = { ...chatList };
+    const lastMessage =
+      chatListClone.messages[chatListClone.messages.length - 1];
+
+    const response = await fetch('/api/buddy', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+      body: JSON.stringify({ message: lastMessage.body }),
+    });
+    const data = await response.json();
+
+    chatListClone.messages.push({
+      id: uuidv4(),
+      author: 'ai',
+      body: data.choices[0].text.trim(),
+    });
+
+    setChatList(chatListClone);
+    setAILoading(false);
+  };
+
+  const handleSendMessage = (message: string) => {
+    const chatListClone = { ...chatList };
+    const id = uuidv4();
+    chatListClone.messages.push({
+      id,
+      author: 'me',
+      body: message,
+    });
+    setChatActiveId(id);
+    setChatList(chatListClone);
+    setAILoading(true);
+  };
+
   return (
-    <main className="flex min-h-screen bg-space-purple-100 dark:bg-space-gray-dark-800 w-full">
-      <section className="min-w-full">
-        <ChatArea chat={chatActive} />
+    <main className="flex min-h-screen ">
+      <section className="flex min-w-full flex-col">
+        <ChatArea chat={chatList} loading={AILoading} />
+        <Footer onSendMessage={handleSendMessage} disabled={AILoading} />
       </section>
     </main>
   );

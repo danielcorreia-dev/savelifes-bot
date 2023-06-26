@@ -1,20 +1,24 @@
 import React from 'react';
+import { Chat } from '@/types/Chat';
+import { ChatMessageItem } from './ChatMessageItem';
 import ChatPlaceholder from './ChatPlaceholder';
-import ChatMessage from './ChatMessage';
-import { Chat } from '../types/Chat';
+import { ChatMessageLoading } from './ChatMessageLoading';
 
 type Props = {
   chat: Chat | undefined;
+  loading: boolean;
 };
 
-const ChatArea = ({ chat }: Props) => {
+const ChatArea = ({ chat, loading }: Props) => {
+  const { messages } = chat || { messages: [] };
   return (
-    <div className="flex-auto overflow-y-scroll styled-scrollbar justify-end">
-      {!chat && <ChatPlaceholder />}
-      {chat &&
-        chat.messages.map((message) => (
-          <ChatMessage message={message} key={message.id} />
+    <div className="h-0 flex-auto overflow-y-scroll">
+      {messages.length === 0 && <ChatPlaceholder />}
+      {messages &&
+        messages.map((message) => (
+          <ChatMessageItem message={message} key={message.id} />
         ))}
+      {loading && <ChatMessageLoading />}
     </div>
   );
 };

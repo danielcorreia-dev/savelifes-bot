@@ -64,13 +64,19 @@ const Sidebar = () => {
         <nav className="flex w-max">
           <ul className="flex-col items-center min-w-full">
             {sidebarItems.map(({ name, path, icon: Icon }, index) => {
-              const pathActive = pathname.startsWith(path);
+              const pathActive = pathname === path;
               return (
                 <li
                   key={index}
-                  className={`text-space-purple-100 hover:text-secondary-yellow transition-colors transition-150 cursor-pointer flex items-center h-20 w-full`}
+                  className={`text-space-purple-100 hover:text-secondary-yellow transition-colors transition-150 cursor-pointer flex items-center h-20 w-full `}
                 >
-                  <Link href={path} className="flex items-center h-20 w-full">
+                  <Link
+                    href={path}
+                    target={index === sidebarItems.length - 1 ? '_blank' : ''}
+                    className={`flex items-center h-20 w-full ${
+                      pathActive && 'text-secondary-yellow'
+                    }`}
+                  >
                     <Icon size={28} />
                     {active && (
                       <motion.span
