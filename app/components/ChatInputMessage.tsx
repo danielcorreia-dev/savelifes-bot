@@ -12,6 +12,12 @@ export const ChatMessageInput = ({ disabled, onSend }: Props) => {
 
   useEffect(() => {
     if (textEl.current) {
+      textEl.current.focus();
+    }
+  }, [disabled]);
+
+  useEffect(() => {
+    if (textEl.current) {
       textEl.current.style.height = '0px';
       const scrollHeight = textEl.current.scrollHeight;
       textEl.current.style.height = scrollHeight + 'px';
