@@ -4,8 +4,6 @@ import ChatArea from './components/ChatArea';
 import { Chat } from '@/types/Chat';
 import { Footer } from './components/Footer';
 import { v4 as uuidv4 } from 'uuid';
-import { sendRequest } from './utils/swr';
-import useSWRMutation from 'swr/mutation';
 
 const Home = () => {
   const [AILoading, setAILoading] = useState<boolean>(false);
