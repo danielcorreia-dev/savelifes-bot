@@ -1,34 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Lifeline Chatbot
 
-## Getting Started
+This project is a lifeline support chatbot that utilizes the GPT-3 API. It is built using the Next.js framework for the backend and React.js for the frontend. The chatbot provides a conversational interface for users to seek emotional support, guidance, or information on various topics.
 
-First, run the development server:
+## Features
+
+- GPT-3 Integration: The chatbot leverages the power of the GPT-3 API by OpenAI to generate human-like responses and engage in meaningful conversations with users.
+- Real-time Communication: The chatbot facilitates real-time communication with users, allowing them to receive immediate responses and support.
+- Multi-topic Support: The chatbot is trained on a wide range of topics, enabling it to provide information and guidance on various subjects, such as mental health, self-care, relationships, and more.
+- User Privacy: The project prioritizes user privacy and confidentiality. No personally identifiable information is stored, and all conversations are anonymized.
+
+## Tech Stack
+
+The Lifeline Chatbot project utilizes the following technologies:
+
+- **Next.js**: A React framework for building server-side rendered (SSR) and static websites.
+
+- **React**: A JavaScript library for building user interfaces.
+
+## Installation
+
+To run the Lifeline Chatbot project locally, follow these steps:
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+git clone https://github.com/danielcorreia-dev/savelifes-bot.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Navigate to the project directory: cd lifeline-chatbot
+3. Install the dependencies: `npm install`
+4. Replace API with your actual GPT-3 route and its params in the `route.ts` file.
+5. Start the development server: npm run dev
+6. Open your web browser and visit http://localhost:3000 to access the Lifeline Chatbot.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Once the Lifeline Chatbot is up and running, users can visit the provided URL to access the chatbot interface. They can start a conversation by typing their message in the input field and pressing "Enter" or clicking the send button.
 
-## Learn More
+## Acknowledgements
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The Lifeline Chatbot project is built upon the amazing technology and research provided by OpenAI's GPT-3. We are grateful for their contributions to the field of natural language processing and conversation AI.
