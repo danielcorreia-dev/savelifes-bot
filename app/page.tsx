@@ -9,6 +9,7 @@ const Home = () => {
   const [AILoading, setAILoading] = useState<boolean>(false);
   const [chatActiveId, setChatActiveId] = useState<string>('');
   const [chatList, setChatList] = useState<Chat>({ messages: [] });
+  const [userId] = useState<string>(uuidv4());
 
   useEffect(() => {
     if (AILoading) {
@@ -18,22 +19,39 @@ const Home = () => {
 
   const getAIResponse = async () => {
     const chatListClone = { ...chatList };
-    const lastMessage =
+    const userLastMessage =
       chatListClone.messages[chatListClone.messages.length - 1];
+
+    let buddyLastMessage = { id: uuidv4(), author: 'ai', body: '' };
+    if (chatListClone.messages.length > 1) {
+      buddyLastMessage =
+        chatListClone.messages[chatListClone.messages.length - 2];
+    }
+
+    let userPenultimateMessage = { id: userId, author: 'me', body: '' };
+    if (chatListClone.messages.length > 2) {
+      userPenultimateMessage =
+        chatListClone.messages[chatListClone.messages.length - 3];
+    }
 
     const response = await fetch('/api/buddy', {
       headers: {
         'Content-Type': 'application/json',
       },
       method: 'POST',
-      body: JSON.stringify({ message: lastMessage.body }),
+      body: JSON.stringify({ 
+        id: userId, 
+        user_penultimate_message: userPenultimateMessage.body,
+        buddy_last_message: buddyLastMessage.body,
+        user_last_message: userLastMessage.body, 
+      }),
     });
     const data = await response.json();
 
     chatListClone.messages.push({
       id: uuidv4(),
       author: 'ai',
-      body: data.choices[0].text.trim(),
+      body: data.content,
     });
 
     setChatList(chatListClone);
