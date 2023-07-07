@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC } from 'react';
 
 interface DisclaimerPopupProps {
   isOpen: boolean;
@@ -14,8 +14,8 @@ export const DisclaimerPopup: FC<DisclaimerPopupProps> = ({
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
       <div className="absolute inset-0 bg-black opacity-50" />
-      <div className="relative bg-white p-6 rounded-lg shadow-md max-w-3xl w-full mx-4 overflow-auto">
-        <h2 className="text-xl font-bold mb-2 text-center">
+      <div className="relative bg-white dark:bg-space-gray-dark-800 dark:text-space-gray-light-100 p-6 rounded-lg shadow-md max-w-3xl w-full mx-4 overflow-auto">
+        <h2 className="text-2xl font-bold mb-2 text-center dark:text-secondary-yellow/90">
           Aviso Legal do Buddy Bot
         </h2>
         <div className="overflow-auto max-h-[70vh] pr-4">
@@ -26,8 +26,10 @@ export const DisclaimerPopup: FC<DisclaimerPopupProps> = ({
             respostas automáticas com a intenção de ajudar a proporcionar algum
             conforto ou alívio temporário.
           </p>
-          <p className="mb-4 font-bold">Por favor, esteja ciente de que:</p>
-          <ul className="list-disc list-inside mb-4 text-justify">
+          <p className="mb-4 font-bold text-lg">
+            Por favor, esteja ciente de que:
+          </p>
+          <ul className="list-disc list-inside mb-4 text-justify space-y-4">
             <li>
               O Buddy Bot não é um profissional de saúde mental licenciado, nem
               um conselheiro, psicólogo ou psiquiatra. Ele não fornece conselhos
@@ -40,9 +42,12 @@ export const DisclaimerPopup: FC<DisclaimerPopupProps> = ({
               perigo, entre em contato com um profissional de saúde mental, uma
               autoridade competente, ou ligue para o Centro de Valorização da
               Vida (CVV) no número 188, que fornece apoio emocional 24/7, ou
-              acesse o site{" "}
-              <a href="https://www.cvv.org.br/" target="_blank" className="font-bold underline">
-                {" "}
+              acesse o site{' '}
+              <a
+                href="https://www.cvv.org.br/"
+                target="_blank"
+                className="font-bold underline dark:hover:text-secondary-yellow dark:text-secondary-yellow/90"
+              >
                 https://www.cvv.org.br/
               </a>
               .
@@ -74,7 +79,7 @@ export const DisclaimerPopup: FC<DisclaimerPopupProps> = ({
         <div className="text-center mt-4">
           <button
             onClick={onClose}
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-200"
+            className="bg-blue-500 dark:bg-space-purple-400 dark:hover:bg-secondary-yellow dark:hover:text-space-purple-900 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-200"
           >
             Aceito
           </button>
