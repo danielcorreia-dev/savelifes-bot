@@ -4,12 +4,16 @@ import ChatArea from './components/ChatArea';
 import { Chat } from '@/types/Chat';
 import { Footer } from './components/Footer';
 import { v4 as uuidv4 } from 'uuid';
+import { DisclaimerPopup } from './components/DisclaimerPopup';
 
 const Home = () => {
   const [AILoading, setAILoading] = useState<boolean>(false);
   const [chatActiveId, setChatActiveId] = useState<string>('');
   const [chatList, setChatList] = useState<Chat>({ messages: [] });
   const [userId] = useState<string>(uuidv4());
+  const [isOpen, setIsOpen] = useState<boolean>(true);
+
+  const handleClose = () => setIsOpen(false);
 
   useEffect(() => {
     if (AILoading) {
@@ -73,6 +77,7 @@ const Home = () => {
 
   return (
     <main className="flex min-h-screen ">
+      <DisclaimerPopup isOpen={isOpen} onClose={handleClose} />
       <section className="flex min-w-full flex-col">
         <ChatArea chat={chatList} loading={AILoading} />
         <Footer onSendMessage={handleSendMessage} disabled={AILoading} />
