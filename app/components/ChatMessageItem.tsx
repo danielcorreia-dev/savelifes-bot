@@ -23,7 +23,7 @@ export const ChatMessageItem = ({ message, handleScroll }: Props) => {
   }, [handleScroll]);
 
   return (
-    <div className={`py-5 ${message.author === 'ai' && 'bg-gray-600/50'}`}>
+    <div className={`py-5 ${message.author === 'ai' && 'bg-gray-600/20'}`}>
       <div className="m-auto flex max-w-4xl text-white">
         <div
           className={`mx-4 flex h-10 w-10 items-center justify-center rounded md:ml-0 ${
