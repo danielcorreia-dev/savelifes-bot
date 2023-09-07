@@ -43,11 +43,11 @@ const Home = () => {
         'Content-Type': 'application/json',
       },
       method: 'POST',
-      body: JSON.stringify({ 
-        id: userId, 
+      body: JSON.stringify({
+        id: userId,
         user_penultimate_message: userPenultimateMessage.body,
         buddy_last_message: buddyLastMessage.body,
-        user_last_message: userLastMessage.body, 
+        user_last_message: userLastMessage.body,
       }),
     });
     const data = await response.json();
