@@ -5,7 +5,7 @@ import SidebarMobile from './SidebarMobile';
 import Sidebar from './Sidebar';
 
 type Props = {};
-const SidebarHandle = (props: Props) => {
+const SidebarHandler = (props: Props) => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
@@ -25,4 +25,4 @@ const SidebarHandle = (props: Props) => {
   return <>{isMobile ? <SidebarMobile /> : <Sidebar />}</>;
 };
 
-export default SidebarHandle;
+export default SidebarHandler;
