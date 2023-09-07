@@ -1,9 +1,6 @@
-import { useEffect, useState } from 'react';
-import Sidebar from './components/Sidebar';
-import SidebarMobile from './components/SidebarMobile';
 import './globals.css';
 import { Inter } from 'next/font/google';
-import SidebarHandle from './components/SidebarHandle';
+import SidebarHandler from './components/SidebarHandler';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,7 +20,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <div>
           <div>
-            <SidebarHandle />
+            <SidebarHandler />
           </div>
           <div className="md:ml-[76px] bg-space-purple-100 dark:bg-space-gray-dark-700">
             <div className="">{children}</div>
