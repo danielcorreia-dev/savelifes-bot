@@ -1,35 +1,10 @@
 'use client';
-import React, { useState } from 'react';
+
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MdChatBubbleOutline, MdMenuBook } from 'react-icons/md';
-import { LuGithub } from 'react-icons/lu';
-import { IconType } from 'react-icons';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-
-type SidebarItem = {
-  name: string;
-  path: string;
-  icon: IconType;
-};
-
-const sidebarItems: SidebarItem[] = [
-  {
-    name: 'Chat',
-    path: '/',
-    icon: MdChatBubbleOutline,
-  },
-  {
-    name: 'About us',
-    path: '/about-us',
-    icon: MdMenuBook,
-  },
-  {
-    name: 'Github',
-    path: 'https://github.com/danielcorreia-dev/savelifes-bot/tree/main',
-    icon: LuGithub,
-  },
-];
+import sidebarItems from '../constants/menuItems';
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -58,7 +33,7 @@ const Sidebar = () => {
       }}
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}
-      className="md:fixed overflow-scroll bg-space-purple-900 dark:bg-space-gray-dark-800 h-screen no-scrollbar"
+      className="fixed overflow-scroll bg-space-purple-900 dark:bg-space-gray-dark-800 h-screen no-scrollbar"
     >
       <aside className="px-6 py-6">
         <nav className="flex w-max">
