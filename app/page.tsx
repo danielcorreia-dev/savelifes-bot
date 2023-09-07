@@ -76,7 +76,7 @@ const Home = () => {
   };
 
   return (
-    <main className="flex min-h-screen ">
+    <main className="flex min-h-screen">
       <DisclaimerPopup isOpen={isOpen} onClose={handleClose} />
       <section className="flex min-w-full flex-col">
         <ChatArea chat={chatList} loading={AILoading} />

@@ -52,7 +52,9 @@ export const ChatMessageItem = ({ message, handleScroll }: Props) => {
             {message.body}
           </TypeAnimation>
         ) : (
-          <div className="flex-1 whitespace-pre-wrap">{message.body}</div>
+          <div className="flex-1 whitespace-pre-wrap text-base">
+            {message.body}
+          </div>
         )}
       </div>
     </div>
