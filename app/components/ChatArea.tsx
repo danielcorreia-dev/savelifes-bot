@@ -25,7 +25,10 @@ const ChatArea = ({ chat, loading }: Props) => {
   }, [loading, chat?.messages?.length]);
 
   return (
-    <div ref={scrollArea} className="h-0 flex-auto overflow-y-scroll">
+    <div
+      ref={scrollArea}
+      className="h-0 flex-auto overflow-y-scroll mt-14 md:mt-8"
+    >
       {messages.length === 0 && <ChatPlaceholder />}
       {messages.map((message) => (
         <ChatMessageItem
