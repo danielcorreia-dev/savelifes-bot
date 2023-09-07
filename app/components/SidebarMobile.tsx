@@ -4,10 +4,12 @@ import { MdMenu } from 'react-icons/md';
 import { motion, AnimatePresence } from 'framer-motion'; // Import AnimatePresence
 import sidebarItems from '../constants/menuItems';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 type Props = {};
 
 const SidebarMobile = (props: Props) => {
+  const pathname = usePathname();
   const [active, setActive] = useState<boolean>(false);
 
   return (
@@ -28,17 +30,21 @@ const SidebarMobile = (props: Props) => {
                 transition={{ ease: 'easeInOut' }}
               >
                 {sidebarItems.map(({ name, path, icon: Icon }, index) => {
+                  const pathActive = pathname === path;
                   return (
                     <li
                       key={index}
                       className={`text-space-purple-100 hover:text-secondary-yellow transition-colors transition-150 cursor-pointer flex items-center h-12 w-full `}
                     >
                       <Link
+                        onClick={() => setTimeout(() => setActive(false), 100)}
                         href={path}
                         target={
                           index === sidebarItems.length - 1 ? '_blank' : ''
                         }
-                        className={`flex items-center h-12 w-full `}
+                        className={`flex items-center h-12 w-full ${
+                          pathActive && 'text-secondary-yellow'
+                        }`}
                       >
                         <Icon size={28} />
                         <span className="ml-2">{name}</span>
