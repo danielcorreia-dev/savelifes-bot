@@ -12,7 +12,7 @@ const SidebarMobile = (props: Props) => {
 
   return (
     <div className="fixed bg-space-purple-900 dark:bg-space-gray-800 w-full">
-      <section className="px-6 py-3">
+      <section className="px-6 py-2">
         <nav className="w-max transition-transform">
           <div className={`${active && 'mb-4'}`}>
             <MdMenu
