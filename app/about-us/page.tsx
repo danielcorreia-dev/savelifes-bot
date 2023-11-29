@@ -1,9 +1,7 @@
 import React from 'react';
 
-type Props = {};
-
-function AboutUs({}: Props) {
+const AboutUsPage = () =>  {
   return <div>teste</div>;
 }
 
-export default AboutUs;
+export default AboutUsPage;
