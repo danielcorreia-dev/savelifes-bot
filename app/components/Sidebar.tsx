@@ -33,17 +33,17 @@ const Sidebar = () => {
       }}
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}
-      className="fixed overflow-scroll bg-space-purple-900 dark:bg-space-gray-dark-800 h-screen no-scrollbar"
+      className="fixed overflow-scroll bg-blue-700 dark:bg-space-gray-dark-800 h-screen no-scrollbar w-24"
     >
-      <aside className="px-6 py-6">
+      <aside className="px-6 py-6 w-4">
         <nav className="flex w-max">
-          <ul className="flex-col items-center min-w-full">
+          <ul className="flex-col items-center min-w-full space-y-4">
             {sidebarItems.map(({ name, path, icon: Icon }, index) => {
               const pathActive = pathname === path;
               return (
                 <li
                   key={index}
-                  className={`text-space-purple-100 hover:text-secondary-yellow transition-colors transition-150 cursor-pointer flex items-center h-20 w-full `}
+                  className={`text-space-purple-100 hover:text-blue-800 hover:bg-blue-300 transition-colors transition-150 cursor-pointer flex items-center h-10 p-2 w-full rounded-md`}
                 >
                   <Link
                     href={path}

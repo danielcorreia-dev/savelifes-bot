@@ -22,7 +22,7 @@ export default function RootLayout({
           <div>
             <SidebarHandler />
           </div>
-          <div className="md:ml-[76px] bg-space-purple-100 dark:bg-space-gray-dark-700">
+          <div className="md:ml-[76px] bg-white dark:bg-space-gray-dark-700 h-screen">
             <div className="">{children}</div>
           </div>
         </div>
